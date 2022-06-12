@@ -9,6 +9,3 @@ class TelaSistema:
         print("0 - finalizar")
         opcoes = int(input("escolha uma opcao:"))
         return opcoes
-
-
-
