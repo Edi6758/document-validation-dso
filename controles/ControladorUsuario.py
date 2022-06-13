@@ -13,14 +13,15 @@ class ControladorUsuario:
                           dados_usuario['telefone'], dados_usuario['rg'],
                           dados_usuario['cpf'], dados_usuario['titulo'])
         print(self.usuarios)
-        if self.usuarios == None:
+        if not self.usuarios:
             self.usuarios.append(usuario)
             print('primeiro if')
         else:
             for usuario in self.usuarios:
-                if usuario not in self.usuarios:
+                if usuario.cpf not in self.usuarios:
                     self.usuarios.append(usuario)
                     print('segundo if')
+                    break
                 else:
                     print('usuario já cadastrado')
         print(self.usuarios)
