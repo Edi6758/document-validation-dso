@@ -15,6 +15,7 @@ class ControladorUsuario:
         if self.usuarios:
             for usuario_lista in self.usuarios:
                 if usuario_lista.cpf == usuario.cpf:
+                    print('cpf ja cadastrado')
                     break
             else:
                 self.usuarios.append(usuario)
@@ -24,15 +25,16 @@ class ControladorUsuario:
         print(self.usuarios)
 
     def login_usuario(self):
-        print('chegou aqui')
         usuario_login = self.__telausuario.login_usuario_dados()
         usuario_senha = self.__telausuario.login_usuario_senha()
-        for usuario_lista in self.usuarios:
-            if usuario_lista.cpf == usuario_login and usuario_lista.senha == usuario_senha:
-                print('Foi logado com sucesso!!!')
-                return True
 
+        if self.usuarios:
+            for usuario_lista in self.usuarios:
+                if usuario_lista.cpf == usuario_login and usuario_lista.senha == usuario_senha:
+                    print('Foi logado com sucesso!!!')
+                    return True
             else:
-                print('dados incorretos!!!')
+                print('kk se fudeu')
                 return False
+
 
