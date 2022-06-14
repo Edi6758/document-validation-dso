@@ -1,4 +1,4 @@
-from document import Document
+from entidades.Documento import Documento
 
 class Cpf(Document):
     def __init__(self, cpf:str, nome:str):

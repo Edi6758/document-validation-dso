@@ -13,6 +13,7 @@ class ControladorUsuario:
                           dados_usuario['telefone'], dados_usuario['rg'],
                           dados_usuario['cpf'], dados_usuario['titulo'])
         print(self.usuarios)
+
         if self.usuarios == None:
             self.usuarios.append(usuario)
             print('primeiro if')

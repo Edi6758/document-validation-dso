@@ -1,4 +1,4 @@
-from documento import Documento
+from entidades.Documento import Documento
 
 class TituloEleitor(Documento):
     def __init__(self, titulo_eleitor:str, nome:str):
