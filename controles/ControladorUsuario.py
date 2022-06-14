@@ -12,15 +12,29 @@ class ControladorUsuario:
         usuario = Usuario(dados_usuario['nome'], dados_usuario['email'], dados_usuario['senha'],
                           dados_usuario['telefone'], dados_usuario['rg'],
                           dados_usuario['cpf'], dados_usuario['titulo'])
-        print(self.usuarios)
-        if self.usuarios == None:
-            self.usuarios.append(usuario)
-            print('primeiro if')
+        if self.usuarios:
+            for usuario_lista in self.usuarios:
+                if usuario_lista.cpf == usuario.cpf:
+                    print('cpf ja cadastrado')
+                    break
+            else:
+                self.usuarios.append(usuario)
         else:
-            for usuario in self.usuarios:
-                if usuario not in self.usuarios:
-                    self.usuarios.append(usuario)
-                    print('segundo if')
-                else:
-                    print('usuario já cadastrado')
+            self.usuarios.append(usuario)
+
         print(self.usuarios)
+
+    def login_usuario(self):
+        usuario_login = self.__telausuario.login_usuario_dados()
+        usuario_senha = self.__telausuario.login_usuario_senha()
+
+        if self.usuarios:
+            for usuario_lista in self.usuarios:
+                if usuario_lista.cpf == usuario_login and usuario_lista.senha == usuario_senha:
+                    print('Foi logado com sucesso!!!')
+                    return True
+            else:
+                print('kk se fudeu')
+                return False
+
+
