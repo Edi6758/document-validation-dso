@@ -14,7 +14,7 @@ class ControladorSistema:
         self.__tela_usuario.cadastro_usuario()
 
     def login_usuario(self):
-        pass
+        self.__tela_usuario.login_usuario()
 
     def encerra(self):
         exit(0)
@@ -22,11 +22,10 @@ class ControladorSistema:
     def abre_tela(self):
         funcao_escolhida = self.__tela_sistema.mostra_opcoes()
         if funcao_escolhida == 1:
-            self.__tela_usuario.cadastro_usuario()
+            self.cadastra_usuario()
             self.inicia_sistema()
         elif funcao_escolhida == 2:
-            #self.login_usuario()
-            print('AINDA NÃO ESTÁ DISPONIVEL')
+            self.login_usuario()
             self.inicia_sistema()
         elif funcao_escolhida == 0:
             self.encerra()
