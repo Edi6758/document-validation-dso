@@ -31,7 +31,7 @@ class ControladorSistema:
             self.inicia_sistema()
         elif funcao_escolhida == 2:
             self.login_usuario()
-            print(self.login_usuario)
+
         elif funcao_escolhida == 0:
             self.encerra()
         else:

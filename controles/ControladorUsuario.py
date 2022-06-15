@@ -1,11 +1,20 @@
 from telas.TelaUsuario import TelaUsuario
 from entidades.Usuario import Usuario
-
+from telas.TelaDocumento import TelaDocumento
+from entidades.Cpf import Cpf
 
 class ControladorUsuario:
     def __init__(self):
         self.usuarios = []
         self.__telausuario = TelaUsuario()
+        self.__teladocumento = TelaDocumento()
+
+    #REMOVER 'cadastro_documento' DO CONTROLADOR DE USUÁRIO...
+    def cadastro_documento(self):
+        dados_cpf = self.__teladocumento.cadastrar_cpf()
+        cpfx = Cpf(dados_cpf['cpf'], dados_cpf['nome'])
+        print(cpfx)
+    #########################################################
 
     def cadastro_usuario(self):
         dados_usuario = self.__telausuario.cadastro_usuario_dados()
@@ -32,9 +41,11 @@ class ControladorUsuario:
             for usuario_lista in self.usuarios:
                 if usuario_lista.cpf == usuario_login and usuario_lista.senha == usuario_senha:
                     print('Foi logado com sucesso!!!')
-                    return True
+                    self.cadastro_documento()
+
+                return True
             else:
-                print('kk se fudeu')
+                print('Usuário ou senha incorreto\nDigite novamente!!')
                 return False
 
 
