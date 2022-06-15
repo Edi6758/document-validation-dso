@@ -1,14 +1,14 @@
 
 
 class Usuario:
-    def __init__(self, nome: str, email: str, telefone: str, rg: str, cpf: str, titulo: str, senha: str):
+    def __init__(self, nome: str, email: str, senha: str, telefone: str, rg: str, cpf: str, titulo: str):
         self.__nome = nome
         self.__email = email
+        self.__senha = senha
         self.__telefone = telefone
         self.__rg = rg
         self.__cpf = cpf
         self.__titulo = titulo
-        self.__senha = senha
 
     @property
     def nome(self):
@@ -27,12 +27,20 @@ class Usuario:
         self.__email = email
 
     @property
+    def senha(self):
+        return self.__senha
+
+    @senha.setter
+    def senha(self, senha):
+        self.__senha = senha
+
+    @property
     def telefone(self):
         return self.__telefone
 
     @telefone.setter
     def telefone(self, telefone):
-        self.telefone = telefone
+        self.__telefone = telefone
 
     @property
     def rg(self):
@@ -57,11 +65,3 @@ class Usuario:
     @titulo.setter
     def titulo(self, titulo):
         self.__titulo = titulo
-
-    @property
-    def senha(self):
-        return self.__senha
-
-    @senha.setter
-    def senha(self, senha):
-        self.__senha = senha
