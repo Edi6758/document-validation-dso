@@ -40,10 +40,8 @@ class ControladorUsuario:
         if self.usuarios:
             for usuario_lista in self.usuarios:
                 if usuario_lista.cpf == usuario_login and usuario_lista.senha == usuario_senha:
-                    print('Foi logado com sucesso!!!')
-                    self.cadastro_documento()
-
-                return True
+                    print('Foi logado com sucesso!!!') #mudar para a tela
+                    return True
             else:
                 print('Usuário ou senha incorreto\nDigite novamente!!')
                 return False

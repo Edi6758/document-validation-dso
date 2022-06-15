@@ -1,6 +1,7 @@
 from telas.TelaSistema import TelaSistema
 from controles.ControladorUsuario import ControladorUsuario
 from telas.TelaDocumento import TelaDocumento
+from controles.ControladorDocumento import  ControladorDocumento
 
 
 class ControladorSistema:
@@ -8,6 +9,7 @@ class ControladorSistema:
         self.__tela_sistema = TelaSistema()
         self.__controlador_usuario = ControladorUsuario()
         self.__tela_documento = TelaDocumento()
+        self.__controlador_documento = ControladorDocumento()
 
     def inicia_sistema(self):
         self.abre_tela()
@@ -16,7 +18,7 @@ class ControladorSistema:
         self.__controlador_usuario.cadastro_usuario()
 
     def login_usuario(self):
-        self.__controlador_usuario.login_usuario()
+        return self.__controlador_usuario.login_usuario()
 
     def validacao(self):
         pass
@@ -30,7 +32,9 @@ class ControladorSistema:
             self.cadastra_usuario()
             self.inicia_sistema()
         elif funcao_escolhida == 2:
-            self.login_usuario()
+            if self.login_usuario():
+                #printar opções de cadastro ou documento
+                self.__controlador_documento.cadastro_documento()
 
         elif funcao_escolhida == 0:
             self.encerra()
