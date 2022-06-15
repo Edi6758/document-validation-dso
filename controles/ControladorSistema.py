@@ -20,8 +20,11 @@ class ControladorSistema:
     def login_usuario(self):
         return self.__controlador_usuario.login_usuario()
 
-    def validacao(self):
-        pass
+    def abre_menu_dados_ou_documentos(self):
+        self.__tela_sistema.mostrar_opcoes_apos_login()
+
+    def abre_menu_dados(self):
+        self.__tela_sistema.mostrar_opcoes_dados()
 
     def encerra(self):
         exit(0)
@@ -33,9 +36,27 @@ class ControladorSistema:
             self.inicia_sistema()
         elif funcao_escolhida == 2:
             if self.login_usuario():
-                #printar opções de cadastro ou documento
-                self.__controlador_documento.cadastro_documento()
-
+                opcao_pos_login = self.__tela_sistema.mostrar_opcoes_apos_login()
+                if opcao_pos_login == 1:
+                    opcao_dados = self.__tela_sistema.mostrar_opcoes_dados()
+                    if opcao_dados == 1:
+                        print('listar usuarios')
+                        self.abre_menu_dados()
+                    elif opcao_dados == 2:
+                        print('alterar dados usuario')
+                        self.abre_menu_dados()
+                    elif opcao_dados == 3:
+                        print('excluir conta')
+                        self.abre_menu_dados()
+                    elif opcao_dados == 0:
+                        self.abre_menu_dados_ou_documentos()
+                elif opcao_pos_login == 2:
+                    self.__controlador_documento.cadastro_documento()
+                elif opcao_pos_login == 0:
+                    self.inicia_sistema()
+            else:
+                print('não foi possivel logar, tente novamente')
+                self.inicia_sistema()
         elif funcao_escolhida == 0:
             self.encerra()
         else:
