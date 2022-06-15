@@ -10,6 +10,7 @@ class ControladorDocumento:
         self.__titulo_eleitor = []
         self.__teladocumento = TelaDocumento()
 
+    #VERIFICAR COMO ESTÁ O CADASTRO DE DOCUMENTO
     def cadastro_documento(self):
         documentos_cadastrados = self.__teladocumento()
         cpf = Cpf(documentos_cadastrados['cpf'])
@@ -17,4 +18,4 @@ class ControladorDocumento:
         titulo_eleitor = TituloEleitor(documentos_cadastrados['titulo_eleitor'])
 
         print(cpf, rg, titulo_eleitor)
-
+    #############################################

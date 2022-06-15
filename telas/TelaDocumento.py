@@ -1,10 +1,20 @@
 class TelaDocumento:
-    def cadastrar_documento(self):
-        print("------CADASTRO DE DOCUMENTO------")
 
-        cpf = input("envie seu arquivo CPF")
-        rg = input("envie seu arquivo de Identidade")
-        titulo_eleitor = input("envie seu arquivo de título de eleitor")
+    #VERIFICAR PORQUE OS VALORES DO CPF NÃO ESTÃO SENDO SALVOS...
+    def cadastrar_cpf(self):
+        print("------ CADASTRO DE CPF ------")
+        cpf = input("Envie seu arquivo CPF")
+        nome = 'CPF'
+        return {'cpf':cpf, 'nome':nome}
+    #############################################################
 
+    def cadastrar_rg(self):
+        print("------ CADASTRO DE RG ------")
+        rg = input("Envie o seu arquivo de Identidade")
+        return rg
 
-        return {'cpf':cpf, 'rg':rg, 'titulo':titulo}
+    def cadastrar_titulo_eleitor(self):
+        print("------ CADASTRO DE RG ------")
+        titulo_eleitor = input("Envie o seu arquivo de título de eleitor")
+        return titulo_eleitor
+        #criar opções de menu para validar os documentos enviados...
