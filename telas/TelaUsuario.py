@@ -2,7 +2,7 @@
 
 class TelaUsuario:
     def cadastro_usuario_dados(self):
-        print("------CADASTRO------")
+        print("------CADASTRO DE PESSOAS------")
 
         nome = input('nome:')
         email = input('email:')

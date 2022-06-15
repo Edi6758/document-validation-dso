@@ -1,4 +1,4 @@
-from documento import Documento
+from entidades.Documento import Documento
 
 class Identidade(Documento):
     def __init__(self, rg:str, nome:str):
