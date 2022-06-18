@@ -1,7 +1,7 @@
 from telas.TelaUsuario import TelaUsuario
 from entidades.Usuario import Usuario
 from telas.TelaDocumento import TelaDocumento
-from entidades.Cpf import Cpf
+
 
 class ControladorUsuario:
     def __init__(self):
@@ -9,12 +9,6 @@ class ControladorUsuario:
         self.__telausuario = TelaUsuario()
         self.__teladocumento = TelaDocumento()
 
-    #REMOVER 'cadastro_documento' DO CONTROLADOR DE USUÁRIO...
-    def cadastro_documento(self):
-        dados_cpf = self.__teladocumento.cadastrar_cpf()
-        cpfx = Cpf(dados_cpf['cpf'], dados_cpf['nome'])
-        print(cpfx)
-    #########################################################
 
     def cadastro_usuario(self):
         dados_usuario = self.__telausuario.cadastro_usuario_dados()
