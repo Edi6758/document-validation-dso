@@ -18,11 +18,11 @@ class ControladorDocumento:
         cpfx = Cpf(dados_cpf['cpf'], dados_cpf['nome'])
         self.__cpfs.append(cpfx)
         return self.__telasistema.mostrar_opcoes_apos_login()
-        print(self.__cpfs)
+
 
     def abre_menu_documento(self):
         opcoes_documento = self.__teladocumento.menu_documentos()
         if(opcoes_documento == 1):
             self.cadastro_cpf()
-
+            print(self.__cpfs)
 
