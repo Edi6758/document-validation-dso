@@ -27,3 +27,15 @@ class TelaSistema:
               '\n0 - Retornar')
         opcoes_menu_dados = int(input('digite sua opção'))
         return opcoes_menu_dados
+
+    def mostra_opcoes_para_alterar(self):
+        print('------ ALTERAR ------'
+                '\n1 - alterar nome '
+                '\n2 - alterar email'
+                '\n3 - alterar senha'
+                '\n4 - alterar telefone'
+                '\n5 - alterar rg'
+                '\n6 - alterar cpf'
+                '\n7 - alterar titulo de eleitor')
+        opcao_escolhida = int(input('qual a opção?'))
+        return  opcao_escolhida

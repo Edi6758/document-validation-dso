@@ -30,35 +30,32 @@ class ControladorSistema:
         exit(0)
 
     def abre_tela(self):
-        funcao_escolhida = self.__tela_sistema.mostra_opcoes()
-        if funcao_escolhida == 1:
-            self.cadastra_usuario()
-            self.inicia_sistema()
-        elif funcao_escolhida == 2:
-            if self.login_usuario():
-                opcao_pos_login = self.__tela_sistema.mostrar_opcoes_apos_login()
-                if opcao_pos_login == 1:
-                    opcao_dados = self.__tela_sistema.mostrar_opcoes_dados()
-                    if opcao_dados == 1:
-                        print('Listar usuários')
-                        self.abre_menu_dados()
-                    elif opcao_dados == 2:
-                        print('Alterar dados usuario')
-                        self.abre_menu_dados()
-                    elif opcao_dados == 3:
-                        print('Excluir conta')
-                        self.abre_menu_dados()
-                    elif opcao_dados == 0:
-                        self.abre_menu_dados_ou_documentos()
-                elif opcao_pos_login == 2:
-                    self.__controlador_documento.abre_menu_documento()
-                elif opcao_pos_login == 0:
-                    return
-            else:
-                print('Não foi possivel logar, tente novamente!')
-                self.inicia_sistema()
-        elif funcao_escolhida == 0:
-            self.encerra()
-        else:
-            print('ESSA NÃO É UMA OPÇÃO VÁLIDA!!!')
-            self.inicia_sistema()
+        while True:
+            funcao_escolhida = self.__tela_sistema.mostra_opcoes()
+            if funcao_escolhida == 1:
+                self.cadastra_usuario()
+            elif funcao_escolhida == 2:
+                if self.login_usuario():
+                    while True:
+                        opcao_pos_login = self.__tela_sistema.mostrar_opcoes_apos_login()
+                        if opcao_pos_login == 1:
+                            while True:
+                                opcao_dados = self.__tela_sistema.mostrar_opcoes_dados()
+                                if opcao_dados == 1:
+                                    self.__controlador_usuario.lista_usuarios_cadastrados()
+                                elif opcao_dados == 2:
+                                    self.__controlador_usuario.altera_dados()
+                                elif opcao_dados == 3:
+                                    self.__controlador_usuario.exclui_conta()
+                                elif opcao_dados == 0:
+                                    break
+                        elif opcao_pos_login == 2:
+                            self.__controlador_documento.abre_menu_documento()
+                        elif opcao_pos_login == 0:
+                            break
+                else:
+                    print('não foi possivel logar, tente novamente')
+            elif funcao_escolhida == 0:
+                break
+            #else:
+                #print('ESSA NÃO É UMA OPÇÃO VÁLIDA!!!')
