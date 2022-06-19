@@ -1,5 +1,12 @@
 class TelaDocumento:
 
+    def menu_documentos(self):
+        print('------ Qual arquivo deseja enviar? ------'
+                '\n1 - Arquivo de CPF: '
+                '\n2 - Arquivo de RG: '
+                '\n0 - Arquivo de título de eleitor: ')
+        opcoes_documento_selecionado = int(input('Digite sua opção: '))
+        return opcoes_documento_selecionado
 
     def cadastrar_cpf(self):
         print("------ CADASTRO DE CPF ------")
