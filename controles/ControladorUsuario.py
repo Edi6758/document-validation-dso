@@ -1,6 +1,7 @@
 from telas.TelaUsuario import TelaUsuario
 from entidades.Usuario import Usuario
 from telas.TelaDocumento import TelaDocumento
+from telas.TelaSistema import TelaSistema
 
 
 class ControladorUsuario:
