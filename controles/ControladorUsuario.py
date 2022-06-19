@@ -30,13 +30,6 @@ class ControladorUsuario:
 
         print(self.usuarios)
 
-    def funcao_usuarios_cadastrados_cpf(self):
-        lista_usuarios_cadastrados_cpf = []
-        for usuario in self.usuarios:
-            lista_usuarios_cadastrados_cpf.append(usuario.cpf)
-
-        return lista_usuarios_cadastrados_cpf
-
     def login_usuario(self):
         usuario_login = self.__telausuario.login_usuario_dados()
         usuario_senha = self.__telausuario.login_usuario_senha()
@@ -44,6 +37,8 @@ class ControladorUsuario:
         if self.usuarios:
             for usuario_lista in self.usuarios:
                 if usuario_lista.cpf == usuario_login and usuario_lista.senha == usuario_senha:
+                    self.usuario_atual = usuario_lista
+                    print(self.usuario_atual.cpf, self.usuario_atual.senha)
                     print('Foi logado com sucesso!!!') #mudar para a tela
                     return True
             else:
@@ -84,3 +79,5 @@ class ControladorUsuario:
                     usuario.cpf = input('digite o novo dado')
                 elif opcao == 7:
                     usuario.titulo = input('digite o novo dado')
+                elif opcao == 8:
+                    print('os dados foram alterados','vezes')
