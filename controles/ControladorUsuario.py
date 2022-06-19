@@ -9,7 +9,6 @@ class ControladorUsuario:
         self.__telausuario = TelaUsuario()
         self.__teladocumento = TelaDocumento()
 
-
     def cadastro_usuario(self):
         dados_usuario = self.__telausuario.cadastro_usuario_dados()
         usuario = Usuario(dados_usuario['nome'], dados_usuario['email'], dados_usuario['senha'],
@@ -26,6 +25,13 @@ class ControladorUsuario:
             self.usuarios.append(usuario)
 
         print(self.usuarios)
+
+    def funcao_usuarios_cadastrados_cpf(self):
+        lista_usuarios_cadastrados_cpf = []
+        for usuario in self.usuarios:
+            lista_usuarios_cadastrados_cpf.append(usuario.cpf)
+
+        return lista_usuarios_cadastrados_cpf
 
     def login_usuario(self):
         usuario_login = self.__telausuario.login_usuario_dados()
