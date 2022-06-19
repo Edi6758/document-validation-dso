@@ -22,7 +22,6 @@ class TelaSistema:
         print('------ DADOS ------'
               '\n1 - Listar usuarios cadastrados'
               '\n2 - Alterar dados'
-              '\n2 - Alterar dados'
               '\n3 - Excluir conta'
               '\n0 - Retornar')
         opcoes_menu_dados = int(input('digite sua opção'))
