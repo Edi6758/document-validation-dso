@@ -2,11 +2,15 @@ class TelaDocumento:
 
     def menu_documentos(self):
         print('------ Qual arquivo deseja enviar? ------'
-                '\n1 - Arquivo de CPF: '
-                '\n2 - Arquivo de RG: '
-                '\n3 - Arquivo de título de eleitor: ')
-        opcoes_documento_selecionado = int(input('Digite sua opção: '))
-        return opcoes_documento_selecionado
+              '\n1 - Arquivo de CPF: '
+              '\n2 - Arquivo de RG: '
+              '\n3 - Arquivo de título de eleitor: ')
+        try:
+            opcoes_documento_selecionado = int(input('Digite sua opção: '))
+        except ValueError:
+            print('somente numeros inteiros por favor')
+        else:
+            return opcoes_documento_selecionado
 
     def cadastrar_cpf(self):
         print("------ CADASTRO DE CPF ------")
@@ -24,4 +28,4 @@ class TelaDocumento:
         print("------ CADASTRO DE TÍTULO DE ELITOR ------")
         titulo_eleitor = input("Envie o seu arquivo de título de eleitor")
         nome = "TÍTULO DE ELITOR"
-        return {'titulo_eleitor':titulo_eleitor, 'nome':nome}
+        return {'titulo_eleitor': titulo_eleitor, 'nome': nome}

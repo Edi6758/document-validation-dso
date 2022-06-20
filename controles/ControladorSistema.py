@@ -1,7 +1,7 @@
 from telas.TelaSistema import TelaSistema
 from controles.ControladorUsuario import ControladorUsuario
 from telas.TelaDocumento import TelaDocumento
-from controles.ControladorDocumento import  ControladorDocumento
+from controles.ControladorDocumento import ControladorDocumento
 
 
 class ControladorSistema:
@@ -47,6 +47,7 @@ class ControladorSistema:
                                     self.__controlador_usuario.altera_dados()
                                 elif opcao_dados == 3:
                                     self.__controlador_usuario.exclui_conta()
+                                    break
                                 elif opcao_dados == 0:
                                     break
                         elif opcao_pos_login == 2:
@@ -54,8 +55,6 @@ class ControladorSistema:
                         elif opcao_pos_login == 0:
                             break
                 else:
-                    print('não foi possivel logar, tente novamente')
+                    self.__tela_sistema.nao_e_possivel_logar()
             elif funcao_escolhida == 0:
                 break
-            #else:
-                #print('ESSA NÃO É UMA OPÇÃO VÁLIDA!!!')
