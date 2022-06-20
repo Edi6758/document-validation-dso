@@ -31,7 +31,7 @@ class ControladorUsuario:
         if self.usuarios:
             for usuario_lista in self.usuarios:
                 if usuario_lista.cpf == usuario.cpf:
-                    print('cpf ja cadastrado')
+                    self.__telausuario.cpf_duplicado()
                     break
             else:
                 self.usuarios.append(usuario)
@@ -39,6 +39,15 @@ class ControladorUsuario:
             self.usuarios.append(usuario)
 
         print(self.usuarios)
+
+    def login_admin(self):
+        usuario_login = self.__telausuario.login_usuario_dados()
+        usuario_senha = self.__telausuario.login_usuario_senha()
+
+        if usuario_login == 'admin' and usuario_senha == 'admin':
+            return True
+        else:
+            return False
 
     def login_usuario(self):
         usuario_login = self.__telausuario.login_usuario_dados()
@@ -48,11 +57,10 @@ class ControladorUsuario:
             for usuario_lista in self.usuarios:
                 if usuario_lista.cpf == usuario_login and usuario_lista.senha == usuario_senha:
                     self.usuario_atual = usuario_lista
-                    print(self.usuario_atual.cpf, self.usuario_atual.senha)
-                    print('Foi logado com sucesso!!!') #mudar para a tela
+                    self.__telausuario.login_sucesso()
                     return True
             else:
-                print('Usuário ou senha incorreto\nDigite novamente!!')
+                self.__telausuario.login_incorreto()
                 return False
 
     #VERIFICAR COMO ESTÁ O CADASTRO DE CPF
@@ -83,15 +91,13 @@ class ControladorUsuario:
         for usuario in self.usuarios:
             lista_cpf_cadastrados.append(usuario.cpf)
 
-        print("O CPF registrado é: ",lista_cpf_cadastrados[0])
-        print("O CPF do documento é", valorCpf)
-
         if(valorCpf == lista_cpf_cadastrados[0]):
-            print("\n======== PARABÉNS!! CPF VALIDADO COM SUCESSO ========\n")
+            self.__telausuario.cpf_validado()
+            return True
         else:
-            print("\n======== INFORMAÇÕES DIVERGENTES ======== "
-                  "\n======== porfavor revise seus dados ========")
+            self.__telausuario.cpf_nao_validado()
             self.__telasistema.mostrar_opcoes_apos_login()
+            return False
 
     #VERIFICAR COMO ESTÁ O CADASTRO DE RG
     def cadastro_rg(self):
@@ -121,16 +127,13 @@ class ControladorUsuario:
         for usuario in self.usuarios:
             lista_rg_cadastrados.append(usuario.rg)
 
-        print("\nO RG registrado é",lista_rg_cadastrados[0])
-        print("O RG do documento é", valorRg)
-
         if(valorRg == lista_rg_cadastrados[0]):
-            print("\n======== PARABÉNS!! RG VALIDADO COM SUCESSO ========\n")
+            self.__telausuario.rg_validado()
+            return True
         else:
-            print("\n======== INFORMAÇÕES DIVERGENTES ======== "
-                  "\n======== porfavor revise seus dados ========")
+            self.__telausuario.rg_nao_validado()
             self.__telasistema.mostrar_opcoes_apos_login()
-
+            return False
     # VERIFICAR COMO ESTÁ O CADASTRO DE TÍTULO DE ELEITOR
 
     def cadastro_titulos(self):
@@ -160,15 +163,13 @@ class ControladorUsuario:
         for usuario in self.usuarios:
             lista_titulo_cadastrados.append(usuario.titulo)
 
-        print("\nO TÍTULO DE ELEITOR registrado é",lista_titulo_cadastrados[0])
-        print("O TÍTULO DE ELEITOR do documento é", valorTitulo)
-
         if(valorTitulo == lista_titulo_cadastrados[0]):
-            print("\n======== PARABÉNS!! RG VALIDADO COM SUCESSO ========\n")
+            self.__telausuario.titulo_validado()
+            return True
         else:
-            print("\n======== INFORMAÇÕES DIVERGENTES ======== "
-                  "\n======== porfavor revise seus dados ========")
+            self.__telausuario.titulo_nao_validado()
             self.__telasistema.mostrar_opcoes_apos_login()
+            return False
 
     # fim de validar docs
 
@@ -188,31 +189,41 @@ class ControladorUsuario:
 
         print(lista_usuarios_cadastrados)
 
+    def listar_cpfs_cadastrados(self):
+        lista_cpfs_cadastrados = []
+        for usuario in self.usuarios:
+            lista_cpfs_cadastrados.append(usuario.cpf)
+
+        print(lista_cpfs_cadastrados)
+
+    def listar_emails_cadastrados(self):
+        lista_emails_cadastrados = []
+        for usuario in self.usuarios:
+            lista_emails_cadastrados.append(usuario.email)
+
+        print(lista_emails_cadastrados)
+
     def exclui_conta(self):
-        print('confirme seu login')
-        usuario_login = self.__telausuario.login_usuario_dados()
-        usuario_senha = self.__telausuario.login_usuario_senha()
         for usuario in self.usuarios:
             if usuario.cpf == self.usuario_atual.cpf and usuario.senha == self.usuario_atual.senha:
                 self.usuarios.remove(usuario)
+                self.__telausuario.conta_excluida_sucesso()
 
     def altera_dados(self):
         opcao = self.__telasistema.mostra_opcoes_para_alterar()
         for usuario in self.usuarios:
             if usuario.cpf == self.usuario_atual.cpf and usuario.senha == self.usuario_atual.senha:
                 if opcao == 1:
-                    usuario.nome = input('digite o novo dado')
+                    usuario.nome = self.__telausuario.alteracao_dados()
                 elif opcao == 2:
-                    usuario.email = input('digite o novo dado')
+                    usuario.email = self.__telausuario.alteracao_dados()
                 elif opcao == 3:
-                    usuario.senha = input('digite o novo dado')
+                    usuario.senha = self.__telausuario.alteracao_dados()
                 elif opcao == 4:
-                    usuario.telefone = input('digite o novo dado')
+                    usuario.telefone = self.__telausuario.alteracao_dados()
                 elif opcao == 5:
-                    usuario.rg = input('digite o novo dado')
+                    usuario.rg = self.__telausuario.alteracao_dados()
                 elif opcao == 6:
-                    usuario.cpf = input('digite o novo dado')
+                    usuario.cpf = self.__telausuario.alteracao_dados()
                 elif opcao == 7:
-                    usuario.titulo = input('digite o novo dado')
-                elif opcao == 8:
-                    print('os dados foram alterados','vezes')
+                    usuario.titulo = self.__telausuario.alteracao_dados()
