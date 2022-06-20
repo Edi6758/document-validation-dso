@@ -50,7 +50,7 @@ class ControladorSistema:
                                 elif opcao_dados == 0:
                                     break
                         elif opcao_pos_login == 2:
-                            self.__controlador_documento.abre_menu_documento()
+                            self.__controlador_usuario.abre_menu_documento()
                         elif opcao_pos_login == 0:
                             break
                 else:

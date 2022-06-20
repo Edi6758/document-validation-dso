@@ -4,7 +4,7 @@ class TelaDocumento:
         print('------ Qual arquivo deseja enviar? ------'
                 '\n1 - Arquivo de CPF: '
                 '\n2 - Arquivo de RG: '
-                '\n0 - Arquivo de título de eleitor: ')
+                '\n3 - Arquivo de título de eleitor: ')
         opcoes_documento_selecionado = int(input('Digite sua opção: '))
         return opcoes_documento_selecionado
 
@@ -17,9 +17,11 @@ class TelaDocumento:
     def cadastrar_rg(self):
         print("------ CADASTRO DE RG ------")
         rg = input("Envie o seu arquivo de Identidade")
-        return rg
+        nome = "RG"
+        return {'rg': rg, 'nome': nome}
 
     def cadastrar_titulo_eleitor(self):
-        print("------ CADASTRO DE RG ------")
+        print("------ CADASTRO DE TÍTULO DE ELITOR ------")
         titulo_eleitor = input("Envie o seu arquivo de título de eleitor")
-        return titulo_eleitor
+        nome = "TÍTULO DE ELITOR"
+        return {'titulo_eleitor':titulo_eleitor, 'nome':nome}
