@@ -1,10 +1,10 @@
 class TelaDocumento:
 
     def menu_documentos(self):
-        print('------ Qual arquivo deseja enviar? ------'
-              '\n1 - Arquivo de CPF: '
-              '\n2 - Arquivo de RG: '
-              '\n3 - Arquivo de título de eleitor: ')
+        print('------ o que deseja fazer? ------'
+              '\n1 - enviar Arquivo de CPF: '
+              '\n2 - enviar Arquivo de RG: '
+              '\n3 - enviar Arquivo de título de eleitor: ')
         try:
             opcoes_documento_selecionado = int(input('Digite sua opção: '))
         except ValueError:

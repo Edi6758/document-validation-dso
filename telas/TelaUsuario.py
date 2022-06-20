@@ -45,18 +45,12 @@ class TelaUsuario:
         novo_dado = input('digite o novo dado')
         return novo_dado
 
-    def mostrar_cpfs(self):
-        pass
-
     def cpf_validado(self):
         print("\n======== PARABÉNS!! CPF VALIDADO COM SUCESSO ========\n")
 
     def cpf_nao_validado(self):
         print("\n======== INFORMAÇÕES DIVERGENTES ======== "
               "\n======== porfavor revise seus dados ========")
-
-    def mostrar_rgs(self):
-        pass
 
     def rg_validado(self):
         print("\n======== PARABÉNS!! RG VALIDADO COM SUCESSO ========\n")
@@ -65,8 +59,6 @@ class TelaUsuario:
         print("\n======== INFORMAÇÕES DIVERGENTES ======== "
               "\n======== porfavor revise seus dados ========")
 
-    def mostrar_titulos(self):
-        pass
 
     def titulo_validado(self):
         print("\n======== PARABÉNS!! RG VALIDADO COM SUCESSO ========\n")

@@ -14,8 +14,19 @@ class TelaSistema:
 
     def mostrar_opcoes_apos_login(self):
         print('------ BEM VINDO ------'
-              '\n1 - Alterar ou listar Dados'
+              '\n1 - Alterar Dados'
               '\n2 - validar documentos'
+              '\n0 - Fechar o programa')
+        try:
+            opcoes_menu_dados_ou_documentos = int(input('Digite sua opção: '))
+        except ValueError:
+            print('somente numeros inteiros por favor')
+        else:
+            return opcoes_menu_dados_ou_documentos
+
+    def mostra_opcoes_apos_login_admin(self):
+        print('------ BEM VINDO ADMIN ------'
+              '\n1 - listar Dados'
               '\n0 - Fechar o programa')
         try:
             opcoes_menu_dados_ou_documentos = int(input('Digite sua opção: '))
@@ -26,9 +37,8 @@ class TelaSistema:
 
     def mostrar_opcoes_dados(self):
         print('------ DADOS ------'
-              '\n1 - Listar usuarios cadastrados'
-              '\n2 - Alterar dados'
-              '\n3 - Excluir conta'
+              '\n1 - Alterar dados'
+              '\n2 - Excluir conta'
               '\n0 - Retornar')
         try:
             opcoes_menu_dados = int(input('digite sua opção'))
@@ -36,6 +46,19 @@ class TelaSistema:
             print('somente numeros inteiros por favor')
         else:
             return opcoes_menu_dados
+
+    def mostrar_opcoes_dados_admin(self):
+        print('------ DADOS ------'
+              '\n1 - Listar usuarios cadastrados'
+              '\n2 - Listar Cpfs cadastrados'
+              '\n3 - Listar Emails cadastrados'
+              '\n0 - Retornar')
+        try:
+            opcoes_menu_dados_admin = int(input('digite sua opção'))
+        except ValueError:
+            print('somente numeros inteiros por favor')
+        else:
+            return opcoes_menu_dados_admin
 
     def mostra_opcoes_para_alterar(self):
         print('------ ALTERAR ------'

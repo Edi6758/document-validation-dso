@@ -40,6 +40,15 @@ class ControladorUsuario:
 
         print(self.usuarios)
 
+    def login_admin(self):
+        usuario_login = self.__telausuario.login_usuario_dados()
+        usuario_senha = self.__telausuario.login_usuario_senha()
+
+        if usuario_login == 'admin' and usuario_senha == 'admin':
+            return True
+        else:
+            return False
+
     def login_usuario(self):
         usuario_login = self.__telausuario.login_usuario_dados()
         usuario_senha = self.__telausuario.login_usuario_senha()
@@ -82,14 +91,13 @@ class ControladorUsuario:
         for usuario in self.usuarios:
             lista_cpf_cadastrados.append(usuario.cpf)
 
-        print("O CPF registrado é: ", lista_cpf_cadastrados[0])
-        print("O CPF do documento é", valorCpf)
-
         if(valorCpf == lista_cpf_cadastrados[0]):
             self.__telausuario.cpf_validado()
+            return True
         else:
             self.__telausuario.cpf_nao_validado()
             self.__telasistema.mostrar_opcoes_apos_login()
+            return False
 
     #VERIFICAR COMO ESTÁ O CADASTRO DE RG
     def cadastro_rg(self):
@@ -119,15 +127,13 @@ class ControladorUsuario:
         for usuario in self.usuarios:
             lista_rg_cadastrados.append(usuario.rg)
 
-        print("\nO RG registrado é",lista_rg_cadastrados[0])
-        print("O RG do documento é", valorRg)
-
         if(valorRg == lista_rg_cadastrados[0]):
             self.__telausuario.rg_validado()
+            return True
         else:
             self.__telausuario.rg_nao_validado()
             self.__telasistema.mostrar_opcoes_apos_login()
-
+            return False
     # VERIFICAR COMO ESTÁ O CADASTRO DE TÍTULO DE ELEITOR
 
     def cadastro_titulos(self):
@@ -157,14 +163,13 @@ class ControladorUsuario:
         for usuario in self.usuarios:
             lista_titulo_cadastrados.append(usuario.titulo)
 
-        print("\nO TÍTULO DE ELEITOR registrado é",lista_titulo_cadastrados[0])
-        print("O TÍTULO DE ELEITOR do documento é", valorTitulo)
-
         if(valorTitulo == lista_titulo_cadastrados[0]):
             self.__telausuario.titulo_validado()
+            return True
         else:
             self.__telausuario.titulo_nao_validado()
             self.__telasistema.mostrar_opcoes_apos_login()
+            return False
 
     # fim de validar docs
 
@@ -183,6 +188,20 @@ class ControladorUsuario:
             lista_usuarios_cadastrados.append(usuario.nome)
 
         print(lista_usuarios_cadastrados)
+
+    def listar_cpfs_cadastrados(self):
+        lista_cpfs_cadastrados = []
+        for usuario in self.usuarios:
+            lista_cpfs_cadastrados.append(usuario.cpf)
+
+        print(lista_cpfs_cadastrados)
+
+    def listar_emails_cadastrados(self):
+        lista_emails_cadastrados = []
+        for usuario in self.usuarios:
+            lista_emails_cadastrados.append(usuario.email)
+
+        print(lista_emails_cadastrados)
 
     def exclui_conta(self):
         for usuario in self.usuarios:
